@@ -104,3 +104,7 @@ alter table professor modify senha varchar (255);
 alter table representante modify senha varchar (255);
 
 alter table gestao modify senha varchar (255);
+
+UPDATE administrador
+SET senha = '$2y$10$l.iQDnnwC5HSiUMn9O95kuiEhBjaalYokwsnPXplEkRzbpG2nTlBO'
+WHERE id_administrador = 1;
