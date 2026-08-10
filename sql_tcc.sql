@@ -93,7 +93,39 @@ show tables;
 select * from ambientes;
 
 insert into administrador (email, senha) values 
-("luaragporto@gmail.com", "123456");
+("luaragporto@gmail.com","123456");
+
+INSERT INTO gestao (email, senha, id_administrador)
+VALUES ('gestao@email.com', '123456', 1);
+
+INSERT INTO coordenador (email, senha, curso, id_administrador)
+VALUES ('coordenador@email.com', '123456', 'DS', 1);
+
+INSERT INTO professor (email, senha, id_coordenador, id_administrador)
+VALUES ('professor@email.com', '123456', 1, 1);
+
+INSERT INTO ambientes (nome, tipo)
+VALUES('Laboratório de Informática 1', 'DS');
+
+
+INSERT INTO agendamentos
+(nome_prof, descr, data_agendamento, id_gestao, id_professor, id_ambientes, horario)
+VALUES
+('João', 'Aula de BD', '2026-07-31', 1, 1, 1, '13h50 - 14h40');
+
+select * from agendamentos;
+select * from professor;
+select * from coordenador;
+select * from gestao;
+select * from administrador;
+
+SELECT * FROM agendamentos
+WHERE id_ambientes = 1;
+
+SELECT id_ambientes 
+FROM agendamentos
+WHERE data_agendamento = '2026-07-31'
+AND horario = '13h50 - 14h40';
 
 alter table administrador modify senha varchar (255);
 
@@ -105,6 +137,20 @@ alter table representante modify senha varchar (255);
 
 alter table gestao modify senha varchar (255);
 
+
 UPDATE administrador
 SET senha = '$2y$10$l.iQDnnwC5HSiUMn9O95kuiEhBjaalYokwsnPXplEkRzbpG2nTlBO'
 WHERE id_administrador = 1;
+
+UPDATE gestao
+SET senha = '$2y$10$Ie/L6qzFA0mOFnTT/R1HouahVABAN1RGRe.BqkK2gCNTKZ7sLu9PS'
+WHERE id_gestao = 1;
+
+UPDATE coordenador
+SET senha = '$2y$10$4oDpXQaXvqZls7.OSJ15RezUvzi40iALwOLjAdXy1M4y6N.RwWplG'
+WHERE id_coordenador = 1;
+
+UPDATE professor
+SET senha = '$2y$10$FEUhkuMAkDCd5m7spI0Q6.flGfWEQiN9/MCLrn/xzsuC4PSGkC8gO'
+WHERE id_professor = 1;
+
